@@ -6,19 +6,19 @@
 <title>Hillary Widanama Adare — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F5F3EC;
-    --paper-2:#EFEBDF;
-    --ink:#1C2321;
-    --ink-soft:#4A524C;
-    --indigo:#2B4570;
-    --ochre:#B9832E;
-    --sage:#5F7355;
-    --line:#CBC4AE;
-    --line-soft:#DEDACB;
-    --maxw:760px;
+    --bg:#0B0E0D;
+    --bg-raised:#121615;
+    --ink:#EDEFEC;
+    --ink-soft:#9AA39C;
+    --ink-faint:#5C645E;
+    --line:#242A27;
+    --line-bright:#3A423D;
+    --gold:#D9A441;
+    --teal:#3FA9A0;
+    --maxw:820px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -26,205 +26,207 @@
 
   body{
     margin:0;
-    background:var(--paper);
+    background:
+      linear-gradient(var(--bg) 0, var(--bg) 100%);
+    background-color:var(--bg);
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size:48px 48px;
     color:var(--ink);
-    font-family:'Archivo',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
     font-size:16px;
-    line-height:1.6;
+    line-height:1.65;
   }
 
   h1,h2,h3{
-    font-family:'Fraunces',Georgia,serif;
+    font-family:'Space Grotesk',sans-serif;
     font-weight:600;
     margin:0;
     color:var(--ink);
+    letter-spacing:-0.01em;
   }
 
-  a{ color:var(--indigo); text-decoration-thickness: 1px; text-underline-offset:3px; }
-  a:hover{ color:var(--ochre); }
-  a:focus-visible, button:focus-visible{ outline:2px solid var(--indigo); outline-offset:3px; }
+  a{ color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(217,164,65,0.35); }
+  a:hover{ border-bottom-color:var(--gold); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
+  code{ font-family:'IBM Plex Mono',monospace; font-size:0.9em; color:var(--teal); }
 
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
 
   /* ---------- NAV ---------- */
   nav{
     position:sticky; top:0; z-index:10;
-    background:rgba(245,243,236,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line-soft);
+    background:rgba(11,14,13,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
   }
   nav .wrap{
     display:flex; align-items:center; justify-content:space-between;
-    padding-top:14px; padding-bottom:14px;
+    padding-top:16px; padding-bottom:16px;
   }
-  nav .brand{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; }
-  nav ul{ list-style:none; display:flex; gap:22px; margin:0; padding:0; }
-  nav a{ color:var(--ink-soft); font-size:0.92rem; text-decoration:none; }
-  nav a:hover{ color:var(--indigo); }
-  .nav-toggle{ display:none; }
-  @media (max-width:620px){
-    nav ul{ display:none; }
-  }
+  nav .brand{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1rem; display:flex; align-items:center; gap:9px; }
+  nav .brand .dot{ width:7px; height:7px; background:var(--gold); }
+  nav ul{ list-style:none; display:flex; gap:26px; margin:0; padding:0; }
+  nav ul li{ margin-right:26px; }
+  nav ul li:last-child{ margin-right:0; }
+  nav a{ color:var(--ink-soft); font-size:0.88rem; border-bottom:none; font-family:'IBM Plex Mono',monospace; }
+  nav a:hover{ color:var(--gold); }
+  @media (max-width:640px){ nav ul{ display:none; } }
 
   /* ---------- HERO ---------- */
   header.hero{
     position:relative;
-    overflow:hidden;
-    padding:96px 0 72px;
+    padding:110px 0 84px;
     border-bottom:1px solid var(--line);
   }
-  header.hero svg.contours{
-    position:absolute; right:-8%; top:-18%;
-    width:620px; height:620px;
-    opacity:0.5;
-    z-index:0;
+  .coord{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    color:var(--teal);
+    margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
   }
-  header.hero .wrap{ position:relative; z-index:1; }
-  .eyebrow{
-    font-size:0.85rem;
-    color:var(--sage);
-    margin-bottom:14px;
-    letter-spacing:0.02em;
+  .coord .crosshair{ width:14px; height:14px; position:relative; flex-shrink:0; }
+  .coord .crosshair::before, .coord .crosshair::after{
+    content:''; position:absolute; background:var(--teal);
   }
+  .coord .crosshair::before{ left:50%; top:0; width:1px; height:100%; transform:translateX(-50%); }
+  .coord .crosshair::after{ top:50%; left:0; height:1px; width:100%; transform:translateY(-50%); }
+
   header.hero h1{
-    font-size:clamp(2.4rem, 5.4vw, 3.6rem);
+    font-size:clamp(2.6rem, 6vw, 4.1rem);
     line-height:1.05;
-    max-width:11ch;
+    max-width:13ch;
   }
   header.hero .role{
-    margin-top:18px;
+    margin-top:20px;
     font-size:1.15rem;
     color:var(--ink-soft);
-    max-width:46ch;
+    max-width:52ch;
   }
   header.hero .meta{
-    margin-top:28px;
-    display:flex; flex-wrap:wrap; gap:10px 22px;
-    font-size:0.92rem;
-    color:var(--ink-soft);
+    margin-top:36px;
+    display:flex; flex-wrap:wrap; gap:0;
+    border-top:1px solid var(--line);
   }
-  header.hero .meta span{ white-space:nowrap; }
+  header.hero .meta span{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    padding:12px 18px 12px 0;
+    margin-right:18px;
+    border-bottom:1px solid var(--line);
+    white-space:nowrap;
+  }
 
   /* ---------- SECTIONS ---------- */
-  section{ padding:64px 0; border-bottom:1px solid var(--line-soft); }
+  section{ padding:76px 0; border-bottom:1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
   .section-head{
-    display:flex; align-items:baseline; gap:14px;
-    margin-bottom:32px;
+    display:flex; align-items:baseline; gap:16px;
+    margin-bottom:40px;
   }
-  .section-head .mark{
-    font-family:'Fraunces',serif;
-    font-size:1rem;
-    color:var(--ochre);
+  .section-head .idx{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    color:var(--gold);
   }
-  .section-head h2{ font-size:1.7rem; }
+  .section-head h2{ font-size:1.6rem; }
 
-  .lede{ max-width:62ch; color:var(--ink-soft); font-size:1.02rem; }
+  .lede{ max-width:64ch; color:var(--ink-soft); font-size:1.02rem; }
 
-  /* Services as definition rows */
+  /* Services */
   .services{ display:flex; flex-direction:column; }
   .service-row{
     display:grid; grid-template-columns:200px 1fr;
-    gap:24px;
-    padding:20px 0;
-    border-top:1px solid var(--line-soft);
+    gap:28px;
+    padding:24px 0;
+    border-top:1px solid var(--line);
   }
   .service-row:first-child{ border-top:none; }
-  .service-row dt{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; }
+  .service-row dt{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.05rem; }
   .service-row dd{ margin:0; color:var(--ink-soft); }
-  @media (max-width:560px){
-    .service-row{ grid-template-columns:1fr; gap:6px; }
-  }
+  @media (max-width:580px){ .service-row{ grid-template-columns:1fr; gap:8px; } }
 
   .stack-note{
-    margin-top:28px;
-    padding:18px 20px;
-    background:var(--paper-2);
-    border-left:3px solid var(--sage);
-    font-size:0.94rem;
+    margin-top:32px;
+    padding:22px 24px;
+    background:var(--bg-raised);
+    border:1px solid var(--line-bright);
+    border-left:2px solid var(--teal);
+    font-size:0.92rem;
     color:var(--ink-soft);
   }
-  .stack-note strong{ color:var(--ink); }
+  .stack-note strong{ color:var(--ink); font-weight:600; }
 
-  /* Timeline (experience + recognition) */
+  /* Timeline */
   .timeline{ display:flex; flex-direction:column; }
   .t-row{
-    display:grid; grid-template-columns:110px 1fr;
-    gap:22px;
-    padding:18px 0;
-    border-top:1px solid var(--line-soft);
+    display:grid; grid-template-columns:120px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
   }
   .t-row:first-child{ border-top:none; }
   .t-row .year{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    color:var(--indigo);
-    font-size:0.98rem;
-    padding-top:2px;
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:500;
+    color:var(--teal);
+    font-size:0.86rem;
+    padding-top:3px;
   }
   .t-row .content h3{ font-size:1.05rem; font-weight:600; }
-  .t-row .content .org{ color:var(--ink-soft); font-size:0.94rem; margin-top:2px; }
-  .t-row .content p{ margin:8px 0 0; color:var(--ink-soft); font-size:0.94rem; }
-  @media (max-width:560px){
-    .t-row{ grid-template-columns:1fr; gap:4px; }
-  }
+  .t-row .content .org{ color:var(--ink-faint); font-size:0.85rem; margin-top:3px; font-family:'IBM Plex Mono',monospace; }
+  .t-row .content p{ margin:10px 0 0; color:var(--ink-soft); font-size:0.94rem; }
+  @media (max-width:580px){ .t-row{ grid-template-columns:1fr; gap:6px; } }
 
   /* Documents */
   .doclist{ list-style:none; margin:0; padding:0; }
   .doclist li{
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-    padding:16px 0;
-    border-top:1px solid var(--line-soft);
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:20px 0;
+    border-top:1px solid var(--line);
   }
   .doclist li:first-child{ border-top:none; }
-  .doc-name{ font-weight:600; }
-  .doc-desc{ color:var(--ink-soft); font-size:0.9rem; margin-top:2px; }
+  .doc-name{ font-weight:600; font-family:'Space Grotesk',sans-serif; }
+  .doc-desc{ color:var(--ink-faint); font-size:0.85rem; margin-top:4px; }
   .doc-link{
     flex-shrink:0;
-    font-size:0.88rem;
-    border:1px solid var(--indigo);
-    padding:7px 14px;
-    text-decoration:none;
+    font-size:0.82rem;
+    font-family:'IBM Plex Mono',monospace;
+    border:1px solid var(--line-bright);
+    color:var(--ink-soft);
+    padding:8px 16px;
     white-space:nowrap;
   }
-  .doc-link:hover{ background:var(--indigo); color:var(--paper); }
+  .doc-link:hover{ border-color:var(--gold); color:var(--gold); background:transparent; }
 
   /* Contact */
-  footer{ padding:56px 0 80px; }
-  .contact-line{ font-size:1.1rem; margin-top:6px; }
-  .contact-line a{ font-weight:600; }
-  footer .fine{ margin-top:40px; font-size:0.82rem; color:var(--ink-soft); }
+  footer{ padding:64px 0 90px; }
+  .contact-line{ font-size:1.2rem; margin-top:10px; font-family:'Space Grotesk',sans-serif; }
+  footer .fine{ margin-top:44px; font-size:0.8rem; color:var(--ink-faint); font-family:'IBM Plex Mono',monospace; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="brand">Hillary Adare</div>
+    <div class="brand"><span class="dot"></span>Hillary Adare</div>
     <ul>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#record">Track record</a></li>
-      <li><a href="#recognition">Recognition</a></li>
-      <li><a href="#documents">Documents</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#profile">profile</a></li>
+      <li><a href="#services">services</a></li>
+      <li><a href="#record">record</a></li>
+      <li><a href="#recognition">recognition</a></li>
+      <li><a href="#documents">documents</a></li>
+      <li><a href="#contact">contact</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="hero">
-  <svg class="contours" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#2B4570" stroke-width="1">
-      <path d="M40,220 C90,140 180,110 250,150 C320,190 340,270 280,320 C220,370 120,350 80,300 C50,262 30,250 40,220 Z"/>
-      <path d="M70,220 C110,160 180,140 235,170 C295,200 305,260 260,300 C210,340 140,325 110,290 C90,266 70,245 70,220 Z"/>
-      <path d="M100,220 C130,180 180,165 220,188 C265,212 268,252 235,278 C200,304 155,295 135,268 C120,248 100,240 100,220 Z"/>
-    </g>
-    <g fill="#B9832E" opacity="0.7">
-      <circle cx="150" cy="215" r="2.4"/>
-    </g>
-  </svg>
   <div class="wrap">
-    <div class="eyebrow">Portfolio &amp; supporting evidence</div>
+    <div class="coord"><span class="crosshair"></span>7.9465° N, 1.0232° W — Ghana / United Kingdom</div>
     <h1>Hillary Widanama Adare</h1>
     <p class="role">Agri-tech entrepreneur and geospatial analyst applying satellite remote sensing, drones and machine learning to precision agriculture for smallholder farmers.</p>
     <div class="meta">
@@ -238,7 +240,7 @@
 
 <section id="profile">
   <div class="wrap">
-    <div class="section-head"><span class="mark">§</span><h2>Profile</h2></div>
+    <div class="section-head"><span class="idx">01</span><h2>Profile</h2></div>
     <p class="lede">
       Hillary founded Wonfliki in 2019 to bring drone-based remote sensing, geospatial analysis and predictive
       analytics to smallholder farmers — a segment most commercial precision-agriculture tools are not built for.
@@ -252,7 +254,7 @@
 
 <section id="services">
   <div class="wrap">
-    <div class="section-head"><span class="mark">§</span><h2>Core services</h2></div>
+    <div class="section-head"><span class="idx">02</span><h2>Core services</h2></div>
     <dl class="services">
       <div class="service-row">
         <dt>Mapping</dt>
@@ -282,10 +284,10 @@
 
 <section id="record">
   <div class="wrap">
-    <div class="section-head"><span class="mark">§</span><h2>Track record</h2></div>
+    <div class="section-head"><span class="idx">03</span><h2>Track record</h2></div>
     <div class="timeline">
       <div class="t-row">
-        <div class="year">2019 — present</div>
+        <div class="year">2019 — NOW</div>
         <div class="content">
           <h3>Founder &amp; CEO, Wonfliki</h3>
           <div class="org">Ghana</div>
@@ -326,7 +328,7 @@
 
 <section id="recognition">
   <div class="wrap">
-    <div class="section-head"><span class="mark">§</span><h2>Recognition</h2></div>
+    <div class="section-head"><span class="idx">04</span><h2>Recognition</h2></div>
     <div class="timeline">
       <div class="t-row"><div class="year">2026</div><div class="content"><h3>Nominee, Schöffel Countryside Awards</h3></div></div>
       <div class="t-row"><div class="year">2026</div><div class="content"><h3>Nominee, Farmers Weekly Awards</h3></div></div>
@@ -335,60 +337,60 @@
       <div class="t-row"><div class="year">2024</div><div class="content"><h3>Womenpreneur Tour Africa Award</h3></div></div>
       <div class="t-row"><div class="year">2024</div><div class="content"><h3>LINC Grant Recipient</h3><div class="org">US Department of State / IREX</div></div></div>
       <div class="t-row"><div class="year">2023</div><div class="content"><h3>Mandela Washington Fellow</h3></div></div>
-      <div class="t-row"><div class="year">—</div><div class="content"><h3>Member, British Ecological Society</h3></div></div>
+      <div class="t-row"><div class="year">2026</div><div class="content"><h3>Member, British Ecological Society</h3></div></div>
     </div>
   </div>
 </section>
 
 <section id="documents">
   <div class="wrap">
-    <div class="section-head"><span class="mark">§</span><h2>Documents</h2></div>
-    <p class="lede">Supporting documents. Files are linked from the <code>/documents</code> folder of this site — replace the placeholder links below once the real files are added.</p>
+    <div class="section-head"><span class="idx">05</span><h2>Documents</h2></div>
+    <p class="lede">Supporting documents. Files are linked from the <code>/documents</code> folder of this site — filenames must match exactly, including case.</p>
     <ul class="doclist">
       <li>
         <div>
           <div class="doc-name">Curriculum Vitae</div>
           <div class="doc-desc">Career and publication history</div>
         </div>
-        <a class="doc-link" href="documents/Hillary_Adare_CV.pdf">View</a>
+        <a class="doc-link" href="documents/Hillary_Adare_CV.pdf">view</a>
       </li>
       <li>
         <div>
           <div class="doc-name">Mandela Washington Fellowship — offer letter</div>
         </div>
-        <a class="doc-link" href="documents/MWF_Letter.pdf">View</a>
+        <a class="doc-link" href="documents/MWF_Letter.pdf">view</a>
       </li>
       <li>
         <div>
           <div class="doc-name">Chevening Scholarship — award letter</div>
         </div>
-        <a class="doc-link" href="documents/Chevening_Letter.pdf">View</a>
+        <a class="doc-link" href="documents/Chevening_Letter.pdf">view</a>
       </li>
       <li>
         <div>
           <div class="doc-name">LINC grant letter</div>
           <div class="doc-desc">US Department of State / IREX</div>
         </div>
-        <a class="doc-link" href="documents/LINC_Grant_Letter.pdf">View</a>
+        <a class="doc-link" href="documents/LINC_Grant_Letter.pdf">view</a>
       </li>
       <li>
         <div>
           <div class="doc-name">Wonfliki innovation evidence</div>
           <div class="doc-desc">Services, technical stack and traction</div>
         </div>
-        <a class="doc-link" href="documents/Wonfliki_Innovation_Evidence.pdf">View</a>
+        <a class="doc-link" href="documents/Wonfliki_Innovation_Evidence.pdf">view</a>
       </li>
       <li>
         <div>
           <div class="doc-name">Absa–Mastercard grant confirmation</div>
         </div>
-        <a class="doc-link" href="documents/Absa_Mastercard_Grant.pdf">View</a>
+        <a class="doc-link" href="documents/Absa_Mastercard_Grant.pdf">view</a>
       </li>
       <li>
         <div>
           <div class="doc-name">Adwumawura programme confirmation</div>
         </div>
-        <a class="doc-link" href="documents/Adwumawura_Letter.pdf">View</a>
+        <a class="doc-link" href="documents/Adwumawura_Letter.pdf">view</a>
       </li>
     </ul>
   </div>
@@ -396,10 +398,9 @@
 
 <footer id="contact">
   <div class="wrap">
-    <div class="section-head"><span class="mark">§</span><h2>Contact</h2></div>
+    <div class="section-head"><span class="idx">06</span><h2>Contact</h2></div>
     <p class="contact-line"><a href="mailto:widanama@gmail.com">widanama@gmail.com</a></p>
-    <p class="fine">Phone number intentionally left off this public page — add it back in if you'd like it visible.
-    Last updated September 2026.</p>
+    <p class="fine">phone intentionally omitted from this public page — last updated 2026-09</p>
   </div>
 </footer>
 
