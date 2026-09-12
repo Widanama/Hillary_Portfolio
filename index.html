@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hillary Widanama Adare — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F3EC;
+    --paper-2:#EFEBDF;
+    --ink:#1C2321;
+    --ink-soft:#4A524C;
+    --indigo:#2B4570;
+    --ochre:#B9832E;
+    --sage:#5F7355;
+    --line:#CBC4AE;
+    --line-soft:#DEDACB;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none!important;transition:none!important;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+
+  a{ color:var(--indigo); text-decoration-thickness: 1px; text-underline-offset:3px; }
+  a:hover{ color:var(--ochre); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--indigo); outline-offset:3px; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(245,243,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  nav .brand{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; }
+  nav ul{ list-style:none; display:flex; gap:22px; margin:0; padding:0; }
+  nav a{ color:var(--ink-soft); font-size:0.92rem; text-decoration:none; }
+  nav a:hover{ color:var(--indigo); }
+  .nav-toggle{ display:none; }
+  @media (max-width:620px){
+    nav ul{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+  }
+  header.hero svg.contours{
+    position:absolute; right:-8%; top:-18%;
+    width:620px; height:620px;
+    opacity:0.5;
+    z-index:0;
+  }
+  header.hero .wrap{ position:relative; z-index:1; }
+  .eyebrow{
+    font-size:0.85rem;
+    color:var(--sage);
+    margin-bottom:14px;
+    letter-spacing:0.02em;
+  }
+  header.hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 3.6rem);
+    line-height:1.05;
+    max-width:11ch;
+  }
+  header.hero .role{
+    margin-top:18px;
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  header.hero .meta{
+    margin-top:28px;
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  header.hero .meta span{ white-space:nowrap; }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:64px 0; border-bottom:1px solid var(--line-soft); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom:32px;
+  }
+  .section-head .mark{
+    font-family:'Fraunces',serif;
+    font-size:1rem;
+    color:var(--ochre);
+  }
+  .section-head h2{ font-size:1.7rem; }
+
+  .lede{ max-width:62ch; color:var(--ink-soft); font-size:1.02rem; }
+
+  /* Services as definition rows */
+  .services{ display:flex; flex-direction:column; }
+  .service-row{
+    display:grid; grid-template-columns:200px 1fr;
+    gap:24px;
+    padding:20px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .service-row:first-child{ border-top:none; }
+  .service-row dt{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; }
+  .service-row dd{ margin:0; color:var(--ink-soft); }
+  @media (max-width:560px){
+    .service-row{ grid-template-columns:1fr; gap:6px; }
+  }
+
+  .stack-note{
+    margin-top:28px;
+    padding:18px 20px;
+    background:var(--paper-2);
+    border-left:3px solid var(--sage);
+    font-size:0.94rem;
+    color:var(--ink-soft);
+  }
+  .stack-note strong{ color:var(--ink); }
+
+  /* Timeline (experience + recognition) */
+  .timeline{ display:flex; flex-direction:column; }
+  .t-row{
+    display:grid; grid-template-columns:110px 1fr;
+    gap:22px;
+    padding:18px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .t-row:first-child{ border-top:none; }
+  .t-row .year{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--indigo);
+    font-size:0.98rem;
+    padding-top:2px;
+  }
+  .t-row .content h3{ font-size:1.05rem; font-weight:600; }
+  .t-row .content .org{ color:var(--ink-soft); font-size:0.94rem; margin-top:2px; }
+  .t-row .content p{ margin:8px 0 0; color:var(--ink-soft); font-size:0.94rem; }
+  @media (max-width:560px){
+    .t-row{ grid-template-columns:1fr; gap:4px; }
+  }
+
+  /* Documents */
+  .doclist{ list-style:none; margin:0; padding:0; }
+  .doclist li{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .doclist li:first-child{ border-top:none; }
+  .doc-name{ font-weight:600; }
+  .doc-desc{ color:var(--ink-soft); font-size:0.9rem; margin-top:2px; }
+  .doc-link{
+    flex-shrink:0;
+    font-size:0.88rem;
+    border:1px solid var(--indigo);
+    padding:7px 14px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .doc-link:hover{ background:var(--indigo); color:var(--paper); }
+
+  /* Contact */
+  footer{ padding:56px 0 80px; }
+  .contact-line{ font-size:1.1rem; margin-top:6px; }
+  .contact-line a{ font-weight:600; }
+  footer .fine{ margin-top:40px; font-size:0.82rem; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Hillary Adare</div>
+    <ul>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#record">Track record</a></li>
+      <li><a href="#recognition">Recognition</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="contours" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#2B4570" stroke-width="1">
+      <path d="M40,220 C90,140 180,110 250,150 C320,190 340,270 280,320 C220,370 120,350 80,300 C50,262 30,250 40,220 Z"/>
+      <path d="M70,220 C110,160 180,140 235,170 C295,200 305,260 260,300 C210,340 140,325 110,290 C90,266 70,245 70,220 Z"/>
+      <path d="M100,220 C130,180 180,165 220,188 C265,212 268,252 235,278 C200,304 155,295 135,268 C120,248 100,240 100,220 Z"/>
+    </g>
+    <g fill="#B9832E" opacity="0.7">
+      <circle cx="150" cy="215" r="2.4"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Portfolio &amp; supporting evidence</div>
+    <h1>Hillary Widanama Adare</h1>
+    <p class="role">Agri-tech entrepreneur and geospatial analyst applying satellite remote sensing, drones and machine learning to precision agriculture for smallholder farmers.</p>
+    <div class="meta">
+      <span>Founder &amp; CEO, Wonfliki</span>
+      <span>Mandela Washington Fellow, 2023</span>
+      <span>Chevening Scholar, 2025</span>
+      <span>Based in the United Kingdom</span>
+    </div>
+  </div>
+</header>
+
+<section id="profile">
+  <div class="wrap">
+    <div class="section-head"><span class="mark">§</span><h2>Profile</h2></div>
+    <p class="lede">
+      Hillary founded Wonfliki in 2019 to bring drone-based remote sensing, geospatial analysis and predictive
+      analytics to smallholder farmers — a segment most commercial precision-agriculture tools are not built for.
+      Her work spans data pipeline design, computer vision, GIS platform development and partnership delivery
+      with government bodies and financial institutions. She holds a BSc in Geomatic Engineering (KNUST) and is
+      completing an MSc in Agricultural Technology and Innovation (Royal Agricultural University) and an MPhil in
+      Geographic Information Systems (KNUST).
+    </p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head"><span class="mark">§</span><h2>Core services</h2></div>
+    <dl class="services">
+      <div class="service-row">
+        <dt>Mapping</dt>
+        <dd>Geospatial mapping of farmland for planning and ongoing monitoring.</dd>
+      </div>
+      <div class="service-row">
+        <dt>Crop monitoring</dt>
+        <dd>Satellite and remote-sensing based monitoring, covering vegetation health (NDVI), soil moisture estimation, yield prediction and pest risk analysis.</dd>
+      </div>
+      <div class="service-row">
+        <dt>Drone spraying</dt>
+        <dd>Precision application services delivered by drone.</dd>
+      </div>
+      <div class="service-row">
+        <dt>Bespoke services</dt>
+        <dd>Including site suitability analysis using remote sensing and GIS.</dd>
+      </div>
+    </dl>
+    <div class="stack-note">
+      <strong>Technical stack.</strong> Built on open-source satellite and geospatial datasets rather than
+      proprietary data feeds. Computer vision and object detection tasks use YOLO (Ultralytics). The product
+      does not currently integrate IoT sensors — all monitoring is derived from satellite and drone-based
+      remote sensing.
+    </div>
+  </div>
+</section>
+
+<section id="record">
+  <div class="wrap">
+    <div class="section-head"><span class="mark">§</span><h2>Track record</h2></div>
+    <div class="timeline">
+      <div class="t-row">
+        <div class="year">2019 — present</div>
+        <div class="content">
+          <h3>Founder &amp; CEO, Wonfliki</h3>
+          <div class="org">Ghana</div>
+          <p>Built an agri-tech platform integrating drone data, GIS and predictive analytics for farm monitoring.
+          Co-developed a digital credit-scoring system for smallholder farmers under the LINC programme (US
+          Department of State / IREX). Secured a $25,000 grant under the Absa–Mastercard Foundation programme
+          (2023). Expanded service coverage to over 15,000 acres of smallholder farmland in Ghana.</p>
+        </div>
+      </div>
+      <div class="t-row">
+        <div class="year">2020 — 2023</div>
+        <div class="content">
+          <h3>Head of R&amp;D &amp; E-commerce Manager</h3>
+          <div class="org">Hexagram Company Ltd</div>
+          <p>Led research and development for software products and digital business strategy; managed the
+          e-commerce portfolio and optimised product-market fit.</p>
+        </div>
+      </div>
+      <div class="t-row">
+        <div class="year">2017 — 2018</div>
+        <div class="content">
+          <h3>Junior Survey Officer</h3>
+          <div class="org">Ghana Grid Company Limited</div>
+          <p>Supported land acquisition, mapping and spatial data collection for national infrastructure projects.</p>
+        </div>
+      </div>
+      <div class="t-row">
+        <div class="year">2017</div>
+        <div class="content">
+          <h3>Software &amp; Content Development Intern</h3>
+          <div class="org">Wineloya Digital</div>
+          <p>Assisted in digital training programmes and online solutions development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recognition">
+  <div class="wrap">
+    <div class="section-head"><span class="mark">§</span><h2>Recognition</h2></div>
+    <div class="timeline">
+      <div class="t-row"><div class="year">2026</div><div class="content"><h3>Nominee, Schöffel Countryside Awards</h3></div></div>
+      <div class="t-row"><div class="year">2026</div><div class="content"><h3>Nominee, Farmers Weekly Awards</h3></div></div>
+      <div class="t-row"><div class="year">2025</div><div class="content"><h3>Chevening Scholar</h3></div></div>
+      <div class="t-row"><div class="year">2024</div><div class="content"><h3>10 Faces Changing Africa Award — Ghana Edition</h3><div class="org">StarAfrica, Germany-Africa</div></div></div>
+      <div class="t-row"><div class="year">2024</div><div class="content"><h3>Womenpreneur Tour Africa Award</h3></div></div>
+      <div class="t-row"><div class="year">2024</div><div class="content"><h3>LINC Grant Recipient</h3><div class="org">US Department of State / IREX</div></div></div>
+      <div class="t-row"><div class="year">2023</div><div class="content"><h3>Mandela Washington Fellow</h3></div></div>
+      <div class="t-row"><div class="year">—</div><div class="content"><h3>Member, British Ecological Society</h3></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="documents">
+  <div class="wrap">
+    <div class="section-head"><span class="mark">§</span><h2>Documents</h2></div>
+    <p class="lede">Supporting documents. Files are linked from the <code>/documents</code> folder of this site — replace the placeholder links below once the real files are added.</p>
+    <ul class="doclist">
+      <li>
+        <div>
+          <div class="doc-name">Curriculum Vitae</div>
+          <div class="doc-desc">Career and publication history</div>
+        </div>
+        <a class="doc-link" href="documents/Hillary_Adare_CV.pdf">View</a>
+      </li>
+      <li>
+        <div>
+          <div class="doc-name">Mandela Washington Fellowship — offer letter</div>
+        </div>
+        <a class="doc-link" href="documents/MWF_Letter.pdf">View</a>
+      </li>
+      <li>
+        <div>
+          <div class="doc-name">Chevening Scholarship — award letter</div>
+        </div>
+        <a class="doc-link" href="documents/Chevening_Letter.pdf">View</a>
+      </li>
+      <li>
+        <div>
+          <div class="doc-name">LINC grant letter</div>
+          <div class="doc-desc">US Department of State / IREX</div>
+        </div>
+        <a class="doc-link" href="documents/LINC_Grant_Letter.pdf">View</a>
+      </li>
+      <li>
+        <div>
+          <div class="doc-name">Wonfliki innovation evidence</div>
+          <div class="doc-desc">Services, technical stack and traction</div>
+        </div>
+        <a class="doc-link" href="documents/Wonfliki_Innovation_Evidence.pdf">View</a>
+      </li>
+      <li>
+        <div>
+          <div class="doc-name">Absa–Mastercard grant confirmation</div>
+        </div>
+        <a class="doc-link" href="documents/Absa_Mastercard_Grant.pdf">View</a>
+      </li>
+      <li>
+        <div>
+          <div class="doc-name">Adwumawura programme confirmation</div>
+        </div>
+        <a class="doc-link" href="documents/Adwumawura_Letter.pdf">View</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head"><span class="mark">§</span><h2>Contact</h2></div>
+    <p class="contact-line"><a href="mailto:widanama@gmail.com">widanama@gmail.com</a></p>
+    <p class="fine">Phone number intentionally left off this public page — add it back in if you'd like it visible.
+    Last updated September 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
